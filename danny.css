@@ -1,0 +1,199 @@
+.navbar {
+    background: #333;
+    padding: 2rem;
+    position: relative;
+}
+
+.nav-brand {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.burger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu {
+    display: none;
+    list-style: none;
+    padding-top: 1rem;
+}
+
+.nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ddd;
+}
+
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #19161d;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.background span {
+    width: 23vmin;
+    height: 23vmin;
+    border-radius: 23vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 27;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+.background span:nth-child(0) {
+    color: #cab9be;
+    top: 51%;
+    left: 87%;
+    animation-duration: 157s;
+    animation-delay: -60s;
+    transform-origin: -6vw 5vh;
+    box-shadow: 46vmin 0 6.65225674948984vmin currentColor;
+}
+
+.background span:nth-child(1) {
+    color: #ffffff;
+    top: 96%;
+    left: 58%;
+    animation-duration: 32s;
+    animation-delay: -52s;
+    transform-origin: 24vw 13vh;
+    box-shadow: 46vmin 0 6.637784461433409vmin currentColor;
+}
+
+.background span:nth-child(2) {
+    color: #cab9be;
+    top: 55%;
+    left: 55%;
+    animation-duration: 87s;
+    animation-delay: -186s;
+    transform-origin: 11vw -11vh;
+    box-shadow: -46vmin 0 6.261488612370074vmin currentColor;
+}
+
+.background span:nth-child(3) {
+    color: #9f99a8;
+    top: 81%;
+    left: 6%;
+    animation-duration: 235s;
+    animation-delay: -184s;
+    transform-origin: 6vw 24vh;
+    box-shadow: -46vmin 0 6.034715907544509vmin currentColor;
+}
+
+.background span:nth-child(4) {
+    color: #9f99a8;
+    top: 32%;
+    left: 37%;
+    animation-duration: 61s;
+    animation-delay: -35s;
+    transform-origin: -20vw -13vh;
+    box-shadow: 46vmin 0 6.454069327879207vmin currentColor;
+}
+
+.background span:nth-child(5) {
+    color: #cab9be;
+    top: 88%;
+    left: 2%;
+    animation-duration: 92s;
+    animation-delay: -230s;
+    transform-origin: 0vw 3vh;
+    box-shadow: 46vmin 0 5.883524040709334vmin currentColor;
+}
+
+.background span:nth-child(6) {
+    color: #ffffff;
+    top: 2%;
+    left: 27%;
+    animation-duration: 89s;
+    animation-delay: -179s;
+    transform-origin: -8vw -15vh;
+    box-shadow: 46vmin 0 6.101990241267431vmin currentColor;
+}
+
+.background span:nth-child(7) {
+    color: #ffffff;
+    top: 44%;
+    left: 74%;
+    animation-duration: 67s;
+    animation-delay: -72s;
+    transform-origin: -23vw -11vh;
+    box-shadow: -46vmin 0 6.181745669788398vmin currentColor;
+}
+
+.background span:nth-child(8) {
+    color: #ffffff;
+    top: 90%;
+    left: 97%;
+    animation-duration: 169s;
+    animation-delay: -46s;
+    transform-origin: -22vw 5vh;
+    box-shadow: -46vmin 0 6.514187018792387vmin currentColor;
+}
+
+.background span:nth-child(9) {
+    color: #9f99a8;
+    top: 49%;
+    left: 91%;
+    animation-duration: 95s;
+    animation-delay: -3s;
+    transform-origin: -5vw -23vh;
+    box-shadow: -46vmin 0 6.22616005953953vmin currentColor;
+}
+
+.hero h1 {
+    text-align: center;
+    position: relative;
+    font-family: 'Times New Roman', serif;
+    font-size: 200px;
+    margin-bottom: 60px;
+    letter-spacing: -1px;
+    -webkit-text-stroke: 2px black;
+    color: white;
+    /* Add black outline */
+}
