@@ -213,6 +213,7 @@
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    touch-action: none;
     cursor: grab;
     /* Prevent text selection */
     user-select: none;
