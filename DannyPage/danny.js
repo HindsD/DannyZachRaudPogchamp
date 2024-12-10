@@ -1,3 +1,9 @@
+const isGithubPages = window.location.hostname === "hindsd.github.io";
+if (isGithubPages) {
+    document.querySelectorAll("a").forEach(link => {
+        link.href = "/DannyZachRaudPogchamp/" + link.getAttribute("href");
+    });
+}
 
 document.getElementById('refreshButton').addEventListener('click', function () {
     // location.reload();
