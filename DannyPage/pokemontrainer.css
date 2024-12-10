@@ -15,7 +15,8 @@ body {
 
 .chat-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
+    height: 90vh;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -26,14 +27,14 @@ body {
 
 .messages {
     flex-grow: 1;
-    padding: 15px;
+    padding: 10px;
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
     word-wrap: break-word;
 }
 
 .message {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .message.user {
@@ -42,10 +43,10 @@ body {
 
 .message span {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 5px;
     word-wrap: break-word;
-    max-width: 80%;
+    max-width: 75%;
 }
 
 .message.user span {
@@ -60,28 +61,28 @@ body {
 
 .input-container {
     display: flex;
-    padding: 10px;
+    padding: 8px;
     background: #f9f9f9;
 }
 
 .input-container input {
     flex-grow: 1;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-right: 8px;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .input-container button {
-    padding: 10px 20px;
+    padding: 8px 12px;
     background: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .input-container button:disabled {
@@ -90,16 +91,16 @@ body {
 
 @media (max-width: 768px) {
     .chat-container {
-        width: 90%;
-        height: 90vh;
+        width: 95%;
+        height: 85vh;
     }
 
     .input-container input {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .input-container button {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
@@ -110,11 +111,11 @@ body {
     }
 
     .messages {
-        padding: 10px;
+        padding: 8px;
     }
 
     .input-container {
-        padding: 5px;
+        padding: 6px;
     }
 
     .input-container input {
