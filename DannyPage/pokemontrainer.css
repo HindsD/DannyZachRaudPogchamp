@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.pokediv {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message.user {
+    text-align: right;
+}
+
+.message span {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    max-width: 80%;
+}
+
+.message.user span {
+    background: #007bff;
+    color: white;
+}
+
+.message.api span {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-container button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input-container button:disabled {
+    background: #cccccc;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        width: 90%;
+        height: 90vh;
+    }
+
+    .input-container input {
+        font-size: 14px;
+    }
+
+    .input-container button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .messages {
+        padding: 10px;
+    }
+
+    .input-container {
+        padding: 5px;
+    }
+
+    .input-container input {
+        font-size: 12px;
+    }
+
+    .input-container button {
+        font-size: 12px;
+    }
+}
