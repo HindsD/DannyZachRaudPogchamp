@@ -59,8 +59,7 @@ async function fetchPokemonData(first, second) {
         const data = await response.json();
         renderPokemonCard(data);
     } catch (error) {
-        document.getElementById('pokemon-card-front').innerHTML = 'Error loading Pokemon data';
-        document.getElementById('pokemon-card-back').innerHTML = 'Error loading Pokemon data';
+        location.reload();
     }
 }
 
