@@ -205,6 +205,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
+    padding-bottom: 0%;
 }
 
 .card-container {
@@ -275,4 +276,25 @@
     padding: 20px;
     font-size: 18px;
     color: #666;
+}
+
+.refreshButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.refreshButton:hover {
+    background-color: #0056b3;
+}
+
+.centered-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 }

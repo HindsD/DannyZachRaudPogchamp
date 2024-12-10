@@ -1,16 +1,6 @@
-const burger = document.querySelector('.burger');
-const navMenu = document.querySelector('.nav-menu');
 
-burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-document.addEventListener('click', (e) => {
-    if (!burger.contains(e.target) && !navMenu.contains(e.target)) {
-        burger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }
+document.getElementById('refreshButton').addEventListener('click', function () {
+    location.reload();
 });
 
 let isDragging = false;
@@ -98,9 +88,12 @@ async function fetchPokemonData(set, first, second) {
     }
 }
 
+//<h1 style="color:red">$${pokemon.data.tcgplayer.prices.holofoil.market}</h1>
+
 function renderPokemonCard(pokemon) {
     const frontHTML = `
         <img class="pokemon-image" src="${pokemon.data.images.large}" alt="${pokemon.data.name}">
+        <h1 style="color:red">$${pokemon.data.cardmarket.prices.averageSellPrice}</h1>
     `;
     const backHTML = `
         <img class="back-image" src="cardback.png" alt="Pokemon Card Back"> 
