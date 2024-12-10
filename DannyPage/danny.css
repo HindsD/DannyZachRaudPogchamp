@@ -200,12 +200,13 @@
 
 .centered-card {
     perspective: 1000px;
-    min-height: 100vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding-bottom: 0%;
+    padding-bottom: 20px;
+    /* Added padding to create space between card and button */
 }
 
 .card-container {
@@ -271,30 +272,106 @@
     -o-user-drag: none;
 }
 
-.loading {
-    text-align: center;
-    padding: 20px;
-    font-size: 18px;
-    color: #666;
-}
-
 .refreshButton {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .refreshButton:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.refreshButton:active {
+    transform: translateY(0);
 }
 
 .centered-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    padding: 20px;
+    margin-top: -20px;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+}
+
+.pokeball {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ff1a1a 50%, white 50%);
+    border-radius: 50%;
+    border: 4px solid #333;
+    position: relative;
+    animation: shake 1.25s cubic-bezier(.36, .07, .19, .97) infinite;
+}
+
+.pokeball::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0) rotate(0);
+    }
+
+    20% {
+        transform: translate(-10px, 0) rotate(-20deg);
+    }
+
+    30% {
+        transform: translate(10px, 0) rotate(20deg);
+    }
+
+    50% {
+        transform: translate(-10px, 0) rotate(-10deg);
+    }
+
+    60% {
+        transform: translate(10px, 0) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+.flavor-text {
+    position: absolute;
+    bottom: 440px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-style: italic;
+    max-width: 300px;
+    margin: 0 auto;
+    color: #333;
 }

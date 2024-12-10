@@ -1,18 +1,27 @@
 
 document.getElementById('refreshButton').addEventListener('click', function () {
-    location.reload();
+    // location.reload();
+    renderPokemonCard(pokemon)
+    fetchPokemonData(set, firstBaseNum, secondBaseNum);
 });
 
 let isDragging = false;
 let startX = 0;
 let rotateY = 0;
+let currentPokemonData = null;
 
 const pokeSets = ['base', 'bw', 'dp', 'ecard', 'ex', 'gym', 'hgss', 'neo', 'pl', 'pop', 'sm', 'sv', 'swsh', 'xy'];
-let set = pokeSets[Math.floor(Math.random() * pokeSets.length)];
-let firstBaseNum = Math.floor(Math.random() * 17);
-let secondBaseNum = Math.floor(Math.random() * 17);
-
 const container = document.querySelector('.card-container');
+const refreshButton = document.getElementById('refreshButton');
+
+// Generate random card parameters
+function getRandomCardParams() {
+    return {
+        set: pokeSets[Math.floor(Math.random() * pokeSets.length)],
+        firstNum: Math.floor(Math.random() * 17),
+        secondNum: Math.floor(Math.random() * 17)
+    };
+}
 
 // Mouse Events
 container.addEventListener('mousedown', startDragging);
@@ -26,7 +35,7 @@ document.addEventListener('touchmove', handleTouchMove);
 document.addEventListener('touchend', handleTouchEnd);
 
 function handleTouchStart(e) {
-    e.preventDefault(); // Prevent scrolling while dragging
+    e.preventDefault();
     isDragging = true;
     startX = e.touches[0].clientX;
     container.classList.add('dragging');
@@ -45,11 +54,7 @@ function handleTouchEnd() {
     if (!isDragging) return;
     isDragging = false;
     container.classList.remove('dragging');
-
-    // Snap to front or back
-    const normalizedRotation = ((rotateY % 360) + 360) % 360;
-    rotateY = Math.round(normalizedRotation / 180) * 180;
-    container.style.transform = `rotateY(${rotateY}deg)`;
+    snapRotation();
 }
 
 function startDragging(e) {
@@ -71,8 +76,10 @@ function stopDragging() {
     if (!isDragging) return;
     isDragging = false;
     container.classList.remove('dragging');
+    snapRotation();
+}
 
-    // Snap to front or back
+function snapRotation() {
     const normalizedRotation = ((rotateY % 360) + 360) % 360;
     rotateY = Math.round(normalizedRotation / 180) * 180;
     container.style.transform = `rotateY(${rotateY}deg)`;
@@ -80,20 +87,36 @@ function stopDragging() {
 
 async function fetchPokemonData(set, first, second) {
     try {
+        document.getElementById('pokemon-card-front').innerHTML = `
+            <div class="loading-container">
+                <div class="pokeball"></div>
+                <div style="color: #333;">Catching Pokemon...</div>
+            </div>`;
+
         const response = await fetch(`https://api.pokemontcg.io/v2/cards/${set}${first}-${second}`);
         const data = await response.json();
+        currentPokemonData = data;
         renderPokemonCard(data);
+        return true;
     } catch (error) {
-        location.reload();
+        console.log('Trying different card...');
+        const newParams = getRandomCardParams();
+        return fetchPokemonData(newParams.set, newParams.firstNum, newParams.secondNum);
     }
 }
 
-//<h1 style="color:red">$${pokemon.data.tcgplayer.prices.holofoil.market}</h1>
-
 function renderPokemonCard(pokemon) {
+    const price = pokemon.data.cardmarket?.prices?.averageSellPrice ||
+        pokemon.data.tcgplayer?.prices?.holofoil?.market ||
+        'N/A';
+
+    const flavorText = pokemon.data.flavorText || 'The data didnt have this card entry my bad guys';
+
     const frontHTML = `
+    
         <img class="pokemon-image" src="${pokemon.data.images.large}" alt="${pokemon.data.name}">
-        <h1 style="color:red">$${pokemon.data.cardmarket.prices.averageSellPrice}</h1>
+        <h1 style="color:red">$${typeof price === 'number' ? price.toFixed(2) : price}</h1>
+        <div class="flavor-text">${flavorText}</div>
     `;
     const backHTML = `
         <img class="back-image" src="cardback.png" alt="Pokemon Card Back"> 
@@ -101,6 +124,18 @@ function renderPokemonCard(pokemon) {
 
     document.getElementById('pokemon-card-front').innerHTML = frontHTML;
     document.getElementById('pokemon-card-back').innerHTML = backHTML;
+
+    // Reset rotation when new card is loaded
+    rotateY = 0;
+    container.style.transform = `rotateY(${rotateY}deg)`;
 }
 
-fetchPokemonData(set, firstBaseNum, secondBaseNum);
+// Refresh button functionality
+refreshButton.addEventListener('click', async () => {
+    const newParams = getRandomCardParams();
+    await fetchPokemonData(newParams.set, newParams.firstNum, newParams.secondNum);
+});
+
+// Initial load
+const initialParams = getRandomCardParams();
+fetchPokemonData(initialParams.set, initialParams.firstNum, initialParams.secondNum);
