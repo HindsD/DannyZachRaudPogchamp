@@ -205,8 +205,10 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding-bottom: 20px;
-    /* Added padding to create space between card and button */
+    padding-bottom: 80px;
+    /* Increased padding to make room for button */
+    position: relative;
+    /* Add this to establish positioning context */
 }
 
 .card-container {
@@ -217,11 +219,11 @@
     transition: transform 0.6s;
     touch-action: none;
     cursor: grab;
-    /* Prevent text selection */
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    pointer-events: auto;
 }
 
 .card-container.dragging {
@@ -273,6 +275,7 @@
 }
 
 .refreshButton {
+    position: relative;
     padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
@@ -282,6 +285,7 @@
     border-radius: 5px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
 }
 
 .refreshButton:hover {
@@ -295,11 +299,23 @@
 }
 
 .centered-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    margin-top: -20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+    .centered-card {
+        padding-bottom: 100px;
+        /* Even more padding on mobile */
+    }
+
+    .centered-button {
+        bottom: 30px;
+        /* Slightly higher position on mobile */
+    }
 }
 
 .loading-container {

@@ -10,7 +10,7 @@ let startX = 0;
 let rotateY = 0;
 let currentPokemonData = null;
 
-const pokeSets = ['base', 'bw', 'dp', 'ecard', 'ex', 'gym', 'hgss', 'neo', 'pl', 'pop', 'sm', 'sv', 'swsh', 'xy'];
+const pokeSets = ['base', 'bw', 'dp', 'dv', 'ecard', 'ex', 'gym', 'hgss', 'neo', 'pl', 'pop', 'sm', 'sv', 'swsh', 'xy', 'mcd', 'ru', 'si',];
 const container = document.querySelector('.card-container');
 const refreshButton = document.getElementById('refreshButton');
 
@@ -116,7 +116,6 @@ function renderPokemonCard(pokemon) {
     
         <img class="pokemon-image" src="${pokemon.data.images.large}" alt="${pokemon.data.name}">
         <h1 style="color:red">$${typeof price === 'number' ? price.toFixed(2) : price}</h1>
-        <div class="flavor-text">${flavorText}</div>
     `;
     const backHTML = `
         <img class="back-image" src="cardback.png" alt="Pokemon Card Back"> 
