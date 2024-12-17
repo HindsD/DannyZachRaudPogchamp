@@ -2,10 +2,8 @@
   text-align: center;
 }
 
-.bord {
-  border: 1px solid black
-}
 
-h1{
-  background-image: URL('./pexels-photo-667500.webp')
+
+.candle {
+  background-image: URL("./pexels-photo-667500.webp");
 }
