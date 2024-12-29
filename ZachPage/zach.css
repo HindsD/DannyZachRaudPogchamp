@@ -6,9 +6,9 @@ ul {
     list-style-type: none;
 }
 
-a {
+.navbar {
     padding: 8px;
-    background-color: #ddd;
+    background-color: #aaa;
 }
 
 .candle {
