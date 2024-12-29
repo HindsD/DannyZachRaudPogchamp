@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-ul {
-    list-style-type: none;
-}
-
 li{
     float: left;
 }
@@ -14,6 +10,7 @@ li{
     display: block;
     padding: 8px;
     background-color: #991c1c;
+    list-style-type: none;
 }
 
 .candle {
