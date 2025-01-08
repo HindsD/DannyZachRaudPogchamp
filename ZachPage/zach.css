@@ -10,6 +10,11 @@
     border-right: 1px solid #000;
 }
 
+.navbar a {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 .candle {
   background-image: URL("./360_F_207329370_fQD7sPgHZxfmSiYjdyfpIz4ugqA3Oieu.jpg");
   height: 400px;
